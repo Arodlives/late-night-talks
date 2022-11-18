@@ -12,8 +12,10 @@ export default function Home() {
   const [client,setClient]=useState();
   const [channel,setChannel]=useState();
   const[messages,setMessages]=useState([]);
+  // console.log('client',client)
 
   const videoRef = useRef();
+
 
   useEffect(()=>{
     //*Optional chaining with '?'
@@ -30,7 +32,7 @@ export default function Home() {
         })
       }).then(r=>r.json())
 
-       const connectedUser = await client.connectUser(
+      const connectedUser = await client.connectUser(
         {
             id: user.id,
             name: user.id,
@@ -141,6 +143,7 @@ export default function Home() {
 
             <p>To get started, enter your username or alias:</p>
 
+            {/* //*great for sign in as a guest */}
             <form onSubmit={(e) => {
               e.preventDefault();
               const id = Array.from(e.currentTarget.elements).find(({ name }) => name ==='userId').value;
